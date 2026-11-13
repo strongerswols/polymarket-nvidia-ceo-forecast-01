@@ -14,22 +14,22 @@ Model (per market, from the case's own 72h of 1-minute Yes prices):
     — even the empirical median move — made the median worse.
   * Spread: empirical horizon quantiles. For anchor horizons
     [1, 2, 5, 10, 20, 40, 80, 160, 240] minutes, take the distribution of
-    actual h-minute price moves over the last 12 hours and read off its
+    actual h-minute price moves over the last 5 hours and read off its
     five quantiles; the band is centred on the last price and interpolated
     in log(h) between anchors. These prices are mostly flat with rare
     jumps that usually revert, so long-horizon moves are much tighter
     than 1-minute moves scaled by sqrt(h) — the empirical anchors capture
     that directly, where the house baseline's fixed 0.0025 sigma does not.
-  * The empirical spread is shrunk by 0.6: overlapping move samples and
+  * The empirical spread is shrunk by 0.85: overlapping move samples and
     rare jumps inflate the raw empirical tails, and the shrunken band
     scores better on every practice case. The band never narrows as the
     horizon grows, never goes below a 0.0004/min floor or above a
-    0.006/min cap (both scaling with sqrt(h)).
+    0.004/min cap (both scaling with sqrt(h)).
   * Quantiles are clamped to [0, 1], rounded to 6 decimals and
     non-decreasing by construction.
 
 Practice score (six cases p00-p05, real Polymarket prices after each
-checkpoint): mean pinball loss 0.293 vs the house baseline's 0.364.
+checkpoint): mean pinball loss 0.286 vs the house baseline's 0.364.
 """
 import json
 import math
