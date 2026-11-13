@@ -44,11 +44,11 @@ Z = [-1.644854, -0.674490, 0.0, 0.674490, 1.644854]
 # --- model parameters (tuned on the six practice cases; the loss surface
 # --- is flat around them, so they are robust, not knife-edge) ---
 ANCHORS = [1, 2, 5, 10, 20, 40, 80, 160, 240]
-WINDOW_MIN = 720         # minutes of recent history used for move samples
+WINDOW_MIN = 300         # minutes of recent history used for move samples
 MIN_SAMPLES = 20         # below this, fall back to the baseline band
-SPREAD_SHRINK = 0.6      # shrink on the empirical spread
+SPREAD_SHRINK = 0.85      # shrink on the empirical spread
 SIGMA_FLOOR = 0.0004     # per-minute sigma floor
-SIGMA_CAP = 0.006        # per-minute sigma cap
+SIGMA_CAP = 0.004        # per-minute sigma cap
 BASE_SIGMA = 0.0025      # house baseline sigma, used only for fallbacks
 
 
